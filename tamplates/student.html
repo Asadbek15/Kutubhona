@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<br>
+    <a href="/assosiy/"><h1>Ortga</h1></a>
+    <br>
+    <form>
+            <input name="qidirish" placeholder="Student ismi">
+            <button>Qidirish</button>
+    </form>
+{% for i in f %}
+<h2>{{i}}</h2>
+<form method="post" action="/student/">{% csrf_token %}
+    <input type="text" name="nom" placeholder="Kitob nomi ">
+    <input type="date" name="s" value="False">
+    <input type="number" name="s_h" placeholder="Muallif yoshi">
+    <input type="text" name="j" placeholder="Kitoblar janri">
+    <select name="m">
+        {% for i in b :%}
+        <option value="{{i.id}}">{{i.ism}}</option>
+<button><a href="student/{{i.id}}/">delete</a> </button>
+    {% endfor %}
+{{i}}
+</body>
+</html>
