@@ -7,6 +7,9 @@ class Muallif(models.Model):
     kitoblar_soni=models.IntegerField(blank=True)
     def __str__(self):
         return self.ism
+    class Meta:
+        ordering=("ism",)
+
 
 class Kitob(models.Model):
     c=(
@@ -23,7 +26,8 @@ class Kitob(models.Model):
     muallif=models.ForeignKey(Muallif,on_delete=models.CASCADE,related_name="m_kitoblari")
     def __str__(self):
         return self.nom
-
+    class Meta:
+        ordering=("nom",)
 class Student(models.Model):
     ism = models.CharField(max_length=15)
     guruh = models.PositiveSmallIntegerField(blank=True)
@@ -32,7 +36,8 @@ class Student(models.Model):
 
     def __str__(self):
         return self.ism
-
+    class Meta:
+        ordering=("ism",)
 class Record(models.Model):
     student=models.ForeignKey(Student,on_delete=models.CASCADE,related_name="student_record")
     kitob=models.ForeignKey(Kitob,on_delete=models.CASCADE,related_name="kitoblar_record")
@@ -41,4 +46,5 @@ class Record(models.Model):
     qaytarish_sana=models.DateField(blank=True,null=True)
     def __str__(self):
         return f"{self.student},{self.kitob}"
+
 
